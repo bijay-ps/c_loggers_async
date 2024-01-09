@@ -3,11 +3,19 @@ const axios = require("axios");
 
 const server = app();
 
-server.get("/users", (req, res) => {
-  axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
-    console.log(response.data);
-    res.send(200);
-  });
+// server.get("/users", (req, res) => {
+//   axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+//     console.log(response.data);
+//     res.send(200);
+//   });
+// });
+
+server.get("/users", async (req, res) => {
+  const response = await axios.get(
+    "https://jsonplaceholder.typicode.com/users"
+  );
+  console.log(response.data);
+  res.send(200);
 });
 
 server.listen(3030, () => {
